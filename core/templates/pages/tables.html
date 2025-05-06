@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Mesas{% endblock %}
+
+{% block content %}
+<div class="flex h-screen bg-gray-100">
+    {% include "includes/sidebar.html" %}
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+        {% include "includes/table_cards.html" %}
+    </div>
+</div>
+{% endblock %} 

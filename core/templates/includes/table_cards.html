@@ -1,0 +1,34 @@
+<!-- Table Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    {% for table in tables %}
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h3 class="text-xl font-bold text-gray-800">Mesa {{ table.number }}</h3>
+                <p class="text-gray-500">{{ table.chairs }} cadeiras</p>
+            </div>
+            <span class="px-3 py-1 text-sm font-semibold {% if table.status == 'disponivel' %}text-green-600 bg-green-100{% else %}text-red-600 bg-red-100{% endif %} rounded-full">
+                {{ table.get_status_display }}
+            </span>
+        </div>
+
+        <div class="flex flex-col space-y-3">
+            {% if table.status == 'disponivel' %}
+            <a href="{% url 'table_detail' table.id %}" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <span>Abrir Comanda</span>
+            </a>
+            {% else %}
+            <a href="{% url 'table_detail' table.id %}" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+                <span>Ver Comanda</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div> 

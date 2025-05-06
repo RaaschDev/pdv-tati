@@ -1,0 +1,52 @@
+<!-- Order Summary Card -->
+<div class="w-96">
+    <div class="bg-white rounded-lg shadow-md p-6 sticky top-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">Resumo do Pedido</h2>
+
+        <!-- Order Items -->
+        <div class="space-y-4 mb-6">
+            {% for order_item in order_items %}
+            <ul>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-gray-800 font-medium">{{ order_item.product.name }}</span>
+                        <p class="text-sm text-gray-500">{{ order_item.quantity }}</p>
+                    </div>
+                    <span class="text-gray-700 font-semibold">R$ {{ order_item.total_value }}</span>
+                </div>
+            </ul>
+            {%endfor%}
+        </div>
+
+        <!-- Order Total -->
+        <div class="border-t pt-4">
+            <div class="flex justify-between font-bold text-lg">
+                <span class="text-gray-800">Total</span>
+                <span class="text-gray-800" id="total">R$ {{ total }}</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-6 space-y-3">
+            <a href="{% url 'close_order' table.id %}"><button
+                    class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Finalizar Pedido
+                </button></a>
+            <br>
+            <br>
+
+            <button class="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50">
+                Imprimir Comanda
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const total = document.querySelector('.total');
+    const totalValue = document.querySelector('.total-value');
+
+    total.addEventListener('click', () => {
+        totalValue.textContent = total.textContent;
+    });
+</script>
