@@ -20,7 +20,7 @@
                         <h2 class="text-xl font-bold text-gray-800">Lista de Produtos</h2>
                     </div>
 
-                    <div class="space-y-4">
+                    <div class="space-y-4 max-h-[calc(100vh-250px)] overflow-y-auto pr-2">
                         <!-- Product Item -->
                         {% for product in products %}
                         <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
@@ -57,7 +57,5 @@
     {% if user.is_superuser %}
         {% include "includes/product_form.html" %}
     {% endif %}
-</div>
-</div>
 </div>
 {% endblock %}
