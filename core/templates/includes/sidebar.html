@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Sidebar -->
 <div class="w-64 bg-white shadow-lg h-screen flex flex-col">
     <div class="p-4">
@@ -5,9 +6,9 @@
     </div>
     <nav class="mt-4 flex-grow">
         {% if user.is_superuser %}
-            <a href="{% url 'home' %}" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100">
-                <span class="mx-4 font-medium">Dashboard</span>
-            </a>
+        <a href="{% url 'home' %}" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100">
+            <span class="mx-4 font-medium">Dashboard</span>
+        </a>
         {% endif %}
         <a href="{% url 'tables' %}" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100">
             <span class="mx-4 font-medium">Mesas</span>
@@ -16,19 +17,29 @@
             <span class="mx-4 font-medium">Produtos</span>
         </a>
         <a href="{% url 'orders' %}" class="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-100">
-                <span class="mx-4 font-medium">Pedidos</span>
-            </a>
+            <span class="mx-4 font-medium">Pedidos</span>
+        </a>
     </nav>
     <!-- Logout Button -->
+
+    <div
+        class="p-20 border-t border-gray-200 bg-[url('{% static 'img/logo.png' %}')] bg-cover bg-center bg-opacity-25 bg-no-repeat">
+
+
+    </div>
+
     <div class="p-4 border-t border-gray-200">
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit" class="w-full flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            <button type="submit"
+                class="w-full flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
                 <span class="font-medium">Sair</span>
             </button>
         </form>
     </div>
-</div> 
+</div>

@@ -74,8 +74,8 @@ def mesas(request):
 def table_detail(request, table_id):
     table = Tables.objects.get(id=table_id)
     # Get products by category
-    food_products = Product.objects.filter(category__name='Comida')
-    drink_products = Product.objects.filter(category__name='Bebida')
+    food_products = Product.objects.filter(category__name='COMIDA')
+    drink_products = Product.objects.filter(category__name='BEBIDA')
     orders = Order.objects.filter(table=table)
     order_items = OrderItem.objects.filter(order__in=orders)
     total = sum(item.total_value for item in order_items)

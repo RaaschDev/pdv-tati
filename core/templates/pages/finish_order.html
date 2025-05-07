@@ -3,7 +3,7 @@
 {% block title %}Finalizar Pedido{% endblock %}
 
 {% block content %}
-<div class="flex h-screen bg-gray-100">
+<div class="flex h-screen">
     {% include "includes/sidebar.html" %}
 
     <!-- Main Content -->
@@ -23,7 +23,7 @@
                 <h2 class="text-xl font-bold text-gray-800 mb-4">Mesa {{ table.number }}</h2>
                 
                 <!-- Products List -->
-                <div class="space-y-4 mb-6">
+                <div class="space-y-4 mb-6 max-h-90 overflow-y-auto">
                     {% for item in itens %}
                     <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
                         <div>
